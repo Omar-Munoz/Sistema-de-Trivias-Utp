@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Si la ruta existe como archivo o carpeta, no reescribas
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Todo lo demás va a index.php
+RewriteRule ^ index.php [L]

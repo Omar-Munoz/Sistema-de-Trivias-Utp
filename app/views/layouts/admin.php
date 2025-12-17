@@ -14,8 +14,9 @@ $user = $_SESSION['user'] ?? null;
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- CSS base + THEME -->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="<?= htmlspecialchars($baseUrl) ?>/assets/css/app.css">
-  <link rel="stylesheet" href="<?= htmlspecialchars($baseUrl) ?>/assets/vendor/datatables/datatables.min.css">
+
   <link rel="stylesheet" href="<?= htmlspecialchars($baseUrl) ?>/assets/css/theme.css">
 
 
@@ -69,34 +70,25 @@ $user = $_SESSION['user'] ?? null;
   <small>Panel Admin • Trivias UTP</small>
 </footer>
 
-<!-- JS -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<!-- DataTables -->
-<script src="<?= htmlspecialchars($baseUrl) ?>/assets/vendor/datatables/datatables.min.js"></script>
-
-<script>
-$(function () {
-  if ($.fn.DataTable) {
-    $('.datatable').DataTable({
-      dom: 'lfrtip',
-      pageLength: 10,
-      lengthMenu: [5, 10, 25, 50],
-      order: [],
-      language: {
-        search: "Buscar:",
-        lengthMenu: "Mostrar _MENU_ registros",
-        info: "Mostrando _START_ a _END_ de _TOTAL_",
-        infoEmpty: "Mostrando 0 a 0 de 0",
-        zeroRecords: "No hay registros",
-        paginate: { previous: "Anterior", next: "Siguiente" }
-      }
+<!-- jQuery + DataTables -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script>
+    // Inicializa DataTables en cualquier tabla con clase .datatable
+    $(function(){
+      $('.datatable').DataTable({
+        pageLength: 10,
+        lengthMenu: [5,10,25,50],
+        language: {
+          search: "Buscar:",
+          lengthMenu: "Mostrar _MENU_",
+          info: "Mostrando _START_ a _END_ de _TOTAL_",
+          paginate: { previous: "Anterior", next: "Siguiente" },
+          zeroRecords: "No hay registros"
+        }
+      });
     });
-  } else {
-    console.error("DataTables no cargó");
-  }
-});
-</script>
+  </script>
 
 
 <script src="<?= htmlspecialchars($baseUrl) ?>/assets/js/app.js"></script>

@@ -111,7 +111,14 @@ $progress = $progress ?? [];
             <td><?= htmlspecialchars($p['topic'] ?? '-') ?></td>
             <td><?= htmlspecialchars($p['level'] ?? '-') ?></td>
             <td><?= (int)($p['total_points'] ?? 0) ?></td>
-            <td><?= (int)($p['percent_complete'] ?? 0) ?>%</td>
+            <td>
+  <?php $pct = max(0, min(100, (float)($p['percent_complete'] ?? 0))); ?>
+  <div class="pbar-row">
+    <div class="pbar"><span style="width: <?= $pct ?>%;"></span></div>
+    <div class="pbar-label"><?= number_format($pct,0) ?>%</div>
+  </div>
+</td>
+
           </tr>
         <?php endforeach; ?>
       </tbody>

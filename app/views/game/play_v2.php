@@ -12,20 +12,37 @@
 
   <p style="font-size:18px;"><?= htmlspecialchars($q['question_text']) ?></p>
 
-  <form method="POST" action="<?= $baseUrl ?>/play/answer">
-    <?php if ($q['type'] === 'tf'): ?>
-      <label><input type="radio" name="answer" value="T" required> True</label><br>
-      <label><input type="radio" name="answer" value="F" required> False</label><br>
-    <?php else: ?>
-      <label><input type="radio" name="answer" value="A" required> A) <?= htmlspecialchars($q['option_a']) ?></label><br>
-      <label><input type="radio" name="answer" value="B" required> B) <?= htmlspecialchars($q['option_b']) ?></label><br>
-      <label><input type="radio" name="answer" value="C" required> C) <?= htmlspecialchars($q['option_c']) ?></label><br>
-      <label><input type="radio" name="answer" value="D" required> D) <?= htmlspecialchars($q['option_d']) ?></label><br>
-    <?php endif; ?>
+  <?php
+// Detectar si es True/False (por texto en opciones)
+$optA = trim((string)($q['option_a'] ?? ''));
+$optB = trim((string)($q['option_b'] ?? ''));
+$optC = trim((string)($q['option_c'] ?? ''));
+$optD = trim((string)($q['option_d'] ?? ''));
 
-    <br>
-    <button class="btn" type="submit">Responder</button>
-  </form>
+$isTF =
+  in_array(strtolower($optA), ['true','verdadero','v'], true) &&
+  in_array(strtolower($optB), ['false','falso','f'], true) &&
+  ($optC === '' && $optD === '');
+?>
+
+<form method="POST" action="<?= $baseUrl ?>/play/answer">
+  <?php if ($isTF): ?>
+    <!-- TRUE/FALSE -->
+    <div class="row" style="gap:12px;">
+      <button class="btn" type="submit" name="answer" value="T">True</button>
+      <button class="btn gray" type="submit" name="answer" value="F">False</button>
+    </div>
+
+  <?php else: ?>
+    <!-- A / B / C / D -->
+    <div class="grid2" style="gap:12px;">
+      <button class="btn gray" type="submit" name="answer" value="A">A) <?= htmlspecialchars($optA) ?></button>
+      <button class="btn gray" type="submit" name="answer" value="B">B) <?= htmlspecialchars($optB) ?></button>
+      <button class="btn gray" type="submit" name="answer" value="C">C) <?= htmlspecialchars($optC) ?></button>
+      <button class="btn gray" type="submit" name="answer" value="D">D) <?= htmlspecialchars($optD) ?></button>
+    </div>
+  <?php endif; ?>
+</form>
 
 </div>
 

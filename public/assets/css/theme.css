@@ -277,3 +277,145 @@ th{
   .btn{ width:100%; }
   th, td{ font-size:12px; }
 }
+
+/* ============================
+   DataTables - estilo integrado
+   ============================ */
+
+.dataTables_wrapper{
+  color: var(--text);
+}
+
+/* labels: "Mostrar" y "Buscar" */
+.dataTables_wrapper label{
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* input buscar */
+.dataTables_wrapper .dataTables_filter input{
+  margin-left: 8px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.10);
+  color: var(--text);
+  outline: none;
+}
+
+/* select mostrar */
+.dataTables_wrapper .dataTables_length select{
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.10);
+  color: var(--text);
+  outline: none;
+}
+
+/* info */
+.dataTables_wrapper .dataTables_info{
+  color: rgba(255,255,255,.75);
+  padding-top: 10px;
+}
+
+/* paginación */
+.dataTables_wrapper .dataTables_paginate{
+  padding-top: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+  border: 1px solid rgba(255,255,255,.18) !important;
+  background: rgba(255,255,255,.08) !important;
+  color: var(--text) !important;
+  border-radius: 999px !important;
+  padding: 6px 12px !important;
+  margin: 0 4px !important;
+  cursor: pointer !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: rgba(255,255,255,.14) !important;
+  color: var(--text) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+  background: var(--grad-primary) !important;
+  color: #0b0f1a !important;
+  border-color: transparent !important;
+}
+
+/* orden (flechas) */
+table.dataTable thead th{
+  color: var(--text) !important;
+}
+
+table.dataTable thead th.sorting,
+table.dataTable thead th.sorting_asc,
+table.dataTable thead th.sorting_desc{
+  background-color: rgba(255,255,255,.07) !important;
+}
+
+/* ============================
+   FIX SELECTS EN MODALES ADMIN
+   ============================ */
+
+/* Select base */
+.modal select,
+.card select {
+  background: rgba(255,255,255,.12);
+  color: #ffffff;
+}
+
+/* Dropdown interno */
+.modal select option,
+.card select option {
+  background: #e5e7eb;   /* gris claro */
+  color: #111827;        /* negro */
+}
+
+/* Hover / seleccionado */
+.modal select option:hover,
+.modal select option:checked,
+.card select option:hover,
+.card select option:checked {
+  background: #c7d2fe;   /* violeta claro */
+  color: #111827;
+}
+
+/* ============================
+   Progress bar
+   ============================ */
+.pbar{
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.14);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.pbar > span{
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: var(--grad-primary);
+  box-shadow: 0 10px 28px rgba(0,0,0,.18);
+  transition: width .35s ease;
+}
+
+/* texto al lado */
+.pbar-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.pbar-label{
+  min-width: 54px;
+  text-align:right;
+  font-weight: 800;
+  color: rgba(var(--text), 1);
+}

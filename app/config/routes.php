@@ -67,4 +67,6 @@ return [
 ['POST', '/admin/topics/update', 'TopicsController@update'],
 ['POST', '/admin/topics/delete', 'TopicsController@delete'],
 
+['GET', '/ranking', 'RankingsController@index'],
+
 ];

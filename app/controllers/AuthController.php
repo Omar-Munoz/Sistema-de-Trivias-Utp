@@ -81,7 +81,7 @@ public function loginForm(): void
       Response::redirect('/login');
     }
 
-    // ✅ permitir operator/admin/player
+    //  permitir operator/admin/player
     if (!in_array($user['role'], ['admin', 'operator', 'player'], true)) {
       Session::flash('err', 'Rol no permitido.');
       Response::redirect('/login');
@@ -90,7 +90,7 @@ public function loginForm(): void
     unset($user['password_hash']);
     Session::set('user', $user);
 
-    // ✅ admin y operator al mismo panel
+    //  admin y operator al mismo panel
     if ($user['role'] === 'admin' || $user['role'] === 'operator') {
       Response::redirect('/admin');
     }

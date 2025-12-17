@@ -139,12 +139,6 @@
   </div>
 </div>
 
-<style>
-.modal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:9999; padding:20px;}
-.modal-content{background:#fff; max-width:760px; margin:40px auto; padding:18px; border-radius:14px; box-shadow:0 10px 40px rgba(0,0,0,.25);}
-.modal-content input, .modal-content select{width:100%; margin-top:6px; margin-bottom:10px;}
-.btn.red{background:#c0392b; color:#fff;}
-</style>
 
 <script>
 function openModal(id){ document.getElementById(id).style.display='block'; }

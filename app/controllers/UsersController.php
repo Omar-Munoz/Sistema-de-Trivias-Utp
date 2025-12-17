@@ -48,7 +48,7 @@ final class UsersController extends Controller
       $role = 'player';
     }
 
-    // ✅ Restricción: operator NO puede crear admin
+    //  Restricción: operator NO puede crear admin
     if ($sessionRole === 'operator' && $role === 'admin') {
       Session::flash('err', 'Operator no puede crear usuarios admin.');
       Response::redirect('/admin/users');
@@ -107,7 +107,7 @@ final class UsersController extends Controller
       Response::redirect('/admin/users');
     }
 
-    // ✅ Restricciones operator
+    //  Restricciones operator
     if ($sessionRole === 'operator') {
       // no modificar admins existentes
       if (($target['role'] ?? '') === 'admin') {

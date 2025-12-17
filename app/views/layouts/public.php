@@ -93,6 +93,8 @@ if (!empty($u['id'] ?? null) && !$avatarUrl) {
         <a class="btn gray" href="<?= htmlspecialchars($baseUrl) ?>/play">Jugar</a>
         <a class="btn gray" href="<?= htmlspecialchars($baseUrl) ?>/progress">Mi Progreso</a>
         <a class="btn gray" href="<?= htmlspecialchars($baseUrl) ?>/my-prizes">Mis Premios</a>
+        <a class="btn gray" href="<?= $baseUrl ?>/ranking">Ranking</a>
+
 
         <?php if (($u['role'] ?? '') === 'admin' || ($u['role'] ?? '') === 'operator'): ?>
           <a class="btn gray" href="<?= htmlspecialchars($baseUrl) ?>/admin">Panel Admin</a>

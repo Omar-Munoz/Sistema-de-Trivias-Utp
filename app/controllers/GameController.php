@@ -135,6 +135,12 @@ final class GameController extends Controller {
 
     $qid = (int)Session::get('current_question_id', 0);
     $given = Sanitizer::str($_POST['answer'] ?? '');
+    $given = strtoupper(trim($given));
+
+// Normaliza True/False a A/B si tu BD guarda A=TRUE y B=FALSE
+if ($given === 'T') $given = 'A';
+if ($given === 'F') $given = 'B';
+
 
     $db = Database::pdo();
     $st = $db->prepare("SELECT correct_answer, points FROM questions WHERE id=? LIMIT 1");
@@ -187,7 +193,7 @@ final class GameController extends Controller {
   // si venía de QR
   $setCode = $g['set_code'] ?? null;
 
-  // ✅ guardar resumen para pantalla de resultados
+  //  guardar resumen para pantalla de resultados
   Session::set('last_game_result', [
     'topic_id' => (int)$g['topic_id'],
     'level_id' => (int)$g['level_id'],
@@ -203,7 +209,7 @@ final class GameController extends Controller {
 
   Session::forget('game');
 
-  // ✅ ahora SIEMPRE muestra resultados primero
+  //  SIEMPRE muestra resultados primero
   Response::redirect('/play/result');
   return;
 }
